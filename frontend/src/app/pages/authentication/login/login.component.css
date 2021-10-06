@@ -1,0 +1,14 @@
+.main {
+    width: 100%;
+    min-height: calc(100vh - 52px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffffff;
+  }
+  
+  .comeBackButtom {
+    color: #0125f1;
+  }
+  
+  

@@ -1,0 +1,67 @@
+.toolbar {
+    height: 50px;
+    background-color: #355993;
+  }
+  
+  .notLoggedIn {
+    display: none;
+  }
+  
+  /* .sidenav-content {
+    margin-top: 10px;
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+  } */
+  
+  .sidenav {
+    width: 240px;
+    padding: 0px;
+  }
+  
+  .header-sidenav {
+    padding: 30px 0px 40px 0px;
+  }
+  
+  .sidenavItem {
+    width: 100%;
+    font-size: 17px;
+    background-color: transparent;
+    transition: background-color 0.25s ease-in-out;
+  }
+  
+  .sidenavItem:hover {
+    background-color: #5c5da1af;
+    transition: background-color 0.25s ease-in-out;
+  }
+  
+  /*   mat-sidenav-container {
+      height: 100%;
+      width: 100%;
+    }
+  
+    mat-sidenav-content {
+      height: 100%;
+      width: 100%;
+    }
+  
+    mat-sidenav {
+      height: 100%;
+      min-width: 260px;
+      max-width: 100%;
+      background-color: #355993;
+    } */
+  
+  @media screen and (min-width: 900px) {
+    .toolbar {
+      padding: 0px 20px;
+    }
+  }
+  
+  @media screen and (min-width: 1200px) {
+    .toolbar {
+      padding: 0px 40px;
+    }
+  }
+  

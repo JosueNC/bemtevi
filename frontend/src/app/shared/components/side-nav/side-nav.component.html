@@ -1,0 +1,53 @@
+<section fxLayout="column">
+  <mat-drawer-container autosize>
+    <mat-drawer
+      #drawer
+      class="sidenav"
+      [(mode)]="mode"
+      [(opened)]="opened"
+      [ngClass]="{ notLoggedIn: !(user$ | async) }"
+    >
+      <mat-nav-list>
+        <a
+          mat-list-item
+          *ngFor="let item of sidenavItems"
+          class="sidenavItem"
+          (click)="goTo(item, drawer)"
+        >
+          <mat-icon>{{ item?.iconName }}</mat-icon>
+          &nbsp;{{ item?.description }}
+        </a>
+      </mat-nav-list>
+    </mat-drawer>
+
+    <div class="sidenav-content" fxLayout="column">
+      <mat-toolbar
+        fxLayout="row"
+        color="primary"
+        class="toolbar"
+        *ngIf="user$ | async"
+      >
+        <section fxFlex="75%">
+          <button mat-icon-button (click)="drawer.toggle()" fxLa>
+            <mat-icon>menu</mat-icon>
+          </button>
+
+          <a (click)="OnHomeClick()" mat-icon-button>
+            <mat-icon>home</mat-icon>
+          </a>
+        </section>
+
+        <section fxFlex="25%" fxLayoutAlign="end">
+          <button mat-icon-button (click)="logout(drawer)">
+            <mat-icon>exit_to_app</mat-icon>
+          </button>
+        </section>
+      </mat-toolbar>
+      <ng-content></ng-content>
+
+      <!--  <button type="button" mat-button (click)="drawer.toggle()">
+        Toggle sidenav
+      </button> -->
+    </div>
+  </mat-drawer-container>
+</section>

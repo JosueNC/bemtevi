@@ -1,0 +1,86 @@
+<main class="main" fxLayout="column" fxLayoutAlign="start center">
+  <section fxLayoutAlign="center center">
+    <mat-card
+      fxFlex.xs="96vw"
+      fxFlex.sm="80vw"
+      fxFlex.md="64vw"
+      fxFlex.lg="48vw"
+      style="margin-top: 30px;"
+      class="formulario"
+    >
+      <mat-card-header>
+        <div mat-card-avatar>
+          <mat-icon>restaurant</mat-icon>
+        </div>
+        <mat-card-title>Bem te vi food system - Login</mat-card-title>
+      </mat-card-header>
+
+      <mat-card-content>
+        <form [formGroup] = "form">
+          <section>
+            <mat-form-field fxFlex="100%">
+              <input
+                matInput
+                type="email"
+                required="true"
+                placeholder="Informe o e-mail"
+                formControlName="email"
+              />
+              
+              <mat-error>O e-mail informado é inválido.</mat-error>
+            </mat-form-field>
+          </section>
+
+          <section>
+            <mat-form-field fxFlex="100%">
+              <input
+                matInput
+                #input_password
+                [type]="inputPassword"
+                placeholder="Informe sua senha"
+                formControlName="password"
+                matInput [type]="hide ? 'password' : 'text'"
+                />
+  
+                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                  <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+  
+              <mat-error>A senha informada é inválida.</mat-error>
+            </mat-form-field>
+          </section>
+
+          <section fxLayout="row wrap" fxLayoutAlign="center" fxLayoutGap="15px">
+            
+            <button
+              type="submit"
+              mat-raised-button
+              color="primary"
+              [disabled]="form?.invalid"
+              cdkFocusInitial
+              (click)="submitFormLogin()"
+            >
+              <mat-icon>lock</mat-icon>
+              Acessar sistema
+            </button>
+
+            <button
+              type="submit"
+              mat-raised-button
+              color="primary"
+              [disabled]="form?.invalid"
+              cdkFocusInitial
+              (click)="OnResetUser()"
+            >
+              <mat-icon>lock</mat-icon>
+              Esqueceu sua senha?
+            </button>
+          </section>
+        </form>
+
+      </mat-card-content>
+
+
+    </mat-card>
+  </section>
+</main>

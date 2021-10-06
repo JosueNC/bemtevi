@@ -1,0 +1,130 @@
+<main class="main" fxLayout="column" fxLayoutAlign="start center">
+  <section >
+    <mat-card
+      fxFlex.xs="96vw"
+      fxFlex.sm="80vw"
+      fxFlex.md="64vw"
+      fxFlex.lg="48vw"
+      style="margin-top: 30px;"
+      class="formulario"
+    >
+      <mat-card-header fxLayoutAlign="center">
+        <div mat-card-avatar>
+          <mat-icon>restaurant</mat-icon>
+        </div>
+        <mat-card-title >Bem te vi food system - Cadastrar Estoque</mat-card-title>
+      </mat-card-header>
+
+      <mat-card-content 
+        fxLayoutAlign="center"
+        
+        >
+        <form [formGroup] = "form">
+          <section>
+            <mat-form-field 
+              appearance="outline"
+              fxFlex="100%"
+              fxFlex.sm="100%"
+              fxFlex.md="100%"
+              fxFlex.lg="100%">
+              <mat-label>Nome do ingrediente</mat-label>
+              <input
+                matInput
+                type="text"
+                required="true"
+                placeholder="Informe o nome do ingrediente"
+                formControlName="nome"
+              />
+              
+              <mat-error>O nome informado é inválido.</mat-error>
+            </mat-form-field>
+          </section>
+
+          <section>
+            <mat-form-field 
+              appearance="outline"
+              fxFlex="100%"
+              fxFlex.sm="100%"
+              fxFlex.md="100%"
+              fxFlex.lg="100%">
+              <mat-label>Quantidade do ingrediente</mat-label>
+              <input
+                matInput
+                type="number"
+                required="true"
+                placeholder="Informe o quantidade do ingrediente"
+                formControlName="quantidade"
+              />
+              
+              <mat-error>A quantidade informada é inválida.</mat-error>
+            </mat-form-field>
+          </section>
+
+          <section fxLayout="row wrap" fxLayoutAlign="center" fxLayoutGap="15px">
+            
+            <button
+              type="submit"
+              mat-raised-button
+              color="primary"
+              [disabled]="form?.invalid"
+              cdkFocusInitial
+              (click)="OnCadastrarEstoque()"
+            >
+              <mat-icon>done</mat-icon>
+              Cadastrar Ingrediente
+            </button>
+
+            <button
+              type="submit"
+              mat-raised-button
+              color="primary"
+              [disabled]="form?.invalid"
+              cdkFocusInitial
+              (click)="OnAtualizarEstoque()"
+            >
+              <mat-icon>done</mat-icon>
+              Atualizar Ingrediente
+            </button>
+          </section>
+        </form>
+
+      </mat-card-content>
+
+      <div class="mat-elevation-z8">
+        <table mat-table [dataSource]="dataSource" matSort>
+      
+          <!-- Position Column -->
+          <ng-container matColumnDef="produto">
+            <th mat-header-cell *matHeaderCellDef> Produto </th>
+            <td mat-cell *matCellDef="let element"> {{element.nome}} </td>
+          </ng-container>
+      
+          <!-- Name Column -->
+          <ng-container matColumnDef="quantidade">
+            <th mat-header-cell *matHeaderCellDef> Quantidade </th>
+            <td mat-cell *matCellDef="let element"> {{element.quantidade}} </td>
+          </ng-container>
+      
+          <!-- Weight Column -->
+          <ng-container matColumnDef="acoes">
+            <th mat-header-cell *matHeaderCellDef> Ações </th>
+            <td mat-cell *matCellDef="let element"> 
+              <a (click)="OnDeletarEstoque(element.id)" class="btn btn-danger rounded mt-2">Deletar</a>
+            </td>
+          </ng-container>
+      
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+        </table>
+      
+        <mat-paginator 
+          [pageSizeOptions]="[10, 20, 50, 100, 1000]"
+          (page)="OnPageChange($event)"
+          showFirstLastButtons 
+          aria-label="Select page of periodic elements">
+        </mat-paginator>
+      </div>
+
+    </mat-card>
+  </section>
+</main>

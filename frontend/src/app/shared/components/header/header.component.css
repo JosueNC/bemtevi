@@ -1,0 +1,21 @@
+.header {
+    height: 97px;
+    width: 100%;
+    padding: 10px 32px;
+    border-bottom: 1px solid gray;
+    background: rgb(0, 85, 155);
+  }
+  
+  .titulo-header {
+    float: right;
+    font-size: 20px;
+    margin-top: 20px;
+  }
+  
+  img {
+    margin-right: 2%;
+  }
+  
+  .header-sidenav {
+    width: 100%;
+  }
